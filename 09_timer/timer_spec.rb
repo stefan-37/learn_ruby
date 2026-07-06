@@ -38,6 +38,12 @@ describe "Timer" do
       @timer.seconds = 4000
       @timer.time_string.should == "01:06:40"
     end
+
+    it "should not allow negative seconds" do
+      @timer.seconds = -1
+      @timer.time_string.should == "00:00:00"
+    end
+
   end
 
 
