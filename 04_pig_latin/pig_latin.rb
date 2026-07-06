@@ -1,12 +1,12 @@
 def translate(sentence)
-  sentence.split.map do |word|
-    if "aeiou".include?(word[0])
-      word + "ay"
+  sentence.split.map do |token|
+    if "aeiou".include?(token[0])
+      token + "ay"
     else
-      consonants = word.chars.index { |c| "aeiou".include?(c) }
-      consonants += 1 if word[consonants] == "u" && word[consonants - 1] == "q"
-      first_consonants = word[0, consonants]
-      word[consonants..-1] + first_consonants + "ay"
+      first_vowel_index = token.chars.index { |c| "aeiou".include?(c) }
+      first_vowel_index += 1 if token[first_vowel_index] == "u" && token[first_vowel_index - 1] == "q"
+      first_consonants = token[0, first_vowel_index]
+      token[first_vowel_index..-1] + first_consonants + "ay"
     end
   end.join(" ")
 end
