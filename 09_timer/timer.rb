@@ -11,10 +11,7 @@ class Timer
   end
 
   def time_string
-    hours = 0
-    minutes = 0
-    seconds = 0
-
+    
     hours = @seconds / 3600
     minutes = (@seconds % 3600) / 60
     seconds = @seconds % 60
