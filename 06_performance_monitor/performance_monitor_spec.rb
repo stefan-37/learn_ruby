@@ -75,4 +75,18 @@ describe "Performance Monitor" do
     average_time.should == (fake_time - @eleven_am).to_f/number_of_times
   end
 
+  it "returns 0 when running a block 0 times" do
+    elapsed_time = measure(0) do
+      sleep 1
+    end
+    elapsed_time.should == 0
+  end
+
+  it "returns 0 when running a block a negative number of times" do
+    elapsed_time = measure(-1) do
+      sleep 1
+    end
+    elapsed_time.should == 0
+  end
+
 end
